@@ -7,6 +7,7 @@ def extract_column_to_text(input_file, output_file, column_index):
             reader = csv.reader(csvfile)
             # 出力ファイルを作成し、指定した列の要素を一行ずつ書き込む
             with open(output_file, 'w', encoding='utf-8') as outfile:
+                next(reader) # 1行目（ヘッダー行）を読み飛ばす
                 for row in reader:
                     if len(row) > column_index:
                         outfile.write(row[column_index] + '\n')
